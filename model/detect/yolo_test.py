@@ -20,7 +20,7 @@ class YOLO(object):
         #   验证集损失较低不代表mAP较高，仅代表该权值在验证集上泛化性能较好。
         #   如果出现shape不匹配，同时要注意训练时的model_path和classes_path参数的修改
         # --------------------------------------------------------------------------#
-        'model_path': 'checkpoint/yolov7-tiny_clean_best_epoch_weights.pth',
+        'model_path': 'logs/ep300-loss0.034-val_loss0.036.pth',
         'classes_path': 'data/voc_classes.txt',
         # ---------------------------------------------------------------------#
         #   anchors_path代表先验框对应的txt文件，一般不修改。
@@ -96,7 +96,8 @@ class YOLO(object):
         print('{} model, and classes loaded.'.format(self.model_path))
         if not onnx:
             if self.cuda:
-                self.net = nn.DataParallel(self.net)
+                # self.net = nn.DataParallel(self.net)
+                self.net = self.net.module if isinstance(self.net, nn.DataParallel) else self.net
                 self.net = self.net.cuda()
 
     # ---------------------------------------------------#

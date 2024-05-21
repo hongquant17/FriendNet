@@ -42,8 +42,12 @@ def generate_txt(annonation_dir, txt_dir, phase='test'):
             in_file_path = os.path.join(annonation_dir, file_name)
             img_path = in_file_path.replace(data_dir_name['label'], data_dir_name['fog']).replace('xml', 'jpg')
             img_path = img_path.replace(os.path.sep, '/')
-            out_file.write(img_path)
-            out_file.write(' ')
+            
+            # comment 2 lines below when training detector
+            # uncomment when training dehaze
+            # out_file.write(img_path)
+            # out_file.write(' ')
+            
             img_path = in_file_path.replace(data_dir_name['label'], data_dir_name['clear']).replace('xml', 'jpg')
             img_path = img_path.replace(os.path.sep, '/')
             out_file.write(img_path)

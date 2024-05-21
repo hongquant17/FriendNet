@@ -14,16 +14,16 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--input_dir', default='', type=str, required=True)
 parser.add_argument('--output_dir', default='', type=str, required=True)
 parser.add_argument('--dehaze_model_path', default='checkpoint/FriendNet_best_model.pth', type=str)
-parser.add_argument('--detect_model_path', default='checkpoint/yolov7-tiny_clean_best_epoch_weights.pth', type=str)
+parser.add_argument('--detect_model_path', default='logs/ep300-loss0.034-val_loss0.036.pth', type=str)
 args = parser.parse_args()
 
 
 def get_state_dict(model_path):
-    state_dict = torch.load(model_path)['state_dict']
+    state_dict = torch.load(model_path)
     new_state_dict = OrderedDict()
     for k, v in state_dict.items():
-        name = k[7:]
-        new_state_dict[name] = v
+        # name = k[7:]
+        new_state_dict[k] = v
     return new_state_dict
 
 

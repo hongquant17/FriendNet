@@ -6,20 +6,20 @@ import os
 # 1: test dehaze
 # 2: eval dehaze
 # 3: eval detect
-mode = 0
+mode = 2
 
 # 'VOC-FOG' 'Foggy_Driving'
 dataset_name = 'VOC-FOG'
 method_name = 'Ours'
 
 hazy_dir = f'data/{dataset_name}/test/FogImages'
-dehazed_dir = f'data/{dataset_name}/test/SOTAs/{method_name}'
+dehazed_dir = f'data/{dataset_name}/test/DehazedImages'
 gt_dir = f'data/{dataset_name}/test/JPEGImages'
 label_dir = f'data/{dataset_name}/test/Annotations'
 map_out_path = r'map_out'
 
-dehaze_model_path = 'checkpoint/FriendNet_best_model.pth'
-detect_model_path = 'checkpoint/yolov7-tiny_clean_best_epoch_weights.pth'
+dehaze_model_path = 'logs_dehazed/FriendNet_epoch_100.pth'
+detect_model_path = 'logs/ep300-loss0.034-val_loss0.036.pth'
 
 
 if mode == 0 or mode == 1:

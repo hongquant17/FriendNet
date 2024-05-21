@@ -20,3 +20,8 @@ logs/
 map_out/
 
 temp/
+
+.temp_map_out/
+
+logs_dehazed/
+
