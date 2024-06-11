@@ -6,7 +6,7 @@ import os
 # 1: test dehaze
 # 2: eval dehaze
 # 3: eval detect
-mode = 2
+mode = 3
 
 # 'VOC-FOG' 'Foggy_Driving'
 dataset_name = 'VOC-FOG'
@@ -18,8 +18,8 @@ gt_dir = f'data/{dataset_name}/test/JPEGImages'
 label_dir = f'data/{dataset_name}/test/Annotations'
 map_out_path = r'map_out'
 
-dehaze_model_path = 'logs_dehazed/FriendNet_epoch_100.pth'
-detect_model_path = 'logs/ep300-loss0.034-val_loss0.036.pth'
+dehaze_model_path = 'logs_dehazeddddd/FriendNet_epoch_100.pth'
+detect_model_path = 'logs/best_epoch_weights.pth'
 
 
 if mode == 0 or mode == 1:

@@ -25,7 +25,7 @@ args = parser.parse_args()
 
 def main():
     print(f'image_dir: {args.image_dir}')
-    print(f'laber_dir: {args.label_dir}')
+    print(f'label_dir: {args.label_dir}')
 
     ext = os.listdir(args.image_dir)[0].split('.')[-1]
     image_ids = [os.path.basename(img_name).split(f'.{ext}')[0] for img_name in os.listdir(args.image_dir)]

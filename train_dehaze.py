@@ -17,7 +17,7 @@ import numpy as np
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--detect_model_path', default='logs/ep300-loss0.038-val_loss0.040.pth', type=str)
+parser.add_argument('--detect_model_path', default='logs/ep300-loss0.040-val_loss0.038.pth', type=str)
 args = parser.parse_args()
 
 
@@ -114,6 +114,7 @@ def fit_one_epoch(network, yolo, yolo_loss, loss_history, optimizer, epoch, epoc
                                 'lr'    : get_lr(optimizer)})
             pbar.update(1)
     print('Finish Train')
+    loss_history.append_loss(epoch + 1, loss_dehazy / epoch_step, loss_yolo / epoch_step_val)
     save_state_dict = network.state_dict()
     torch.save(save_state_dict, os.path.join(save_dir, f'FriendNet_epoch_{epoch + 1}.pth'))
 
@@ -137,7 +138,7 @@ def main():
     Freeze_Train        = False
     
 
-    Init_lr             = 1e-2
+    Init_lr             = 4e-4
     Min_lr              = Init_lr * 0.01
 
     optimizer_type      = "adamw"
